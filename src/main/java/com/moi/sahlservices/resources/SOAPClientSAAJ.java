@@ -26,7 +26,7 @@ public class SOAPClientSAAJ {
         SOAPPart soapPart = soapMessage.getSOAPPart();
 
         String myNamespace = "res";
-        String myNamespaceURI = "http://tempuri.org/ResidencyFeesMaidVisasShl/";
+        String myNamespaceURI = "http://tempuri.org/ResidencyFeesFamilyVisasShl/";
 
         // SOAP Envelope
         //System.out.println("-----------------------------8-----------------------");
@@ -55,9 +55,9 @@ public class SOAPClientSAAJ {
         // SOAP Body
         SOAPBody soapBody = envelope.getBody();
         //System.out.println("-----------------------------11-----------------------");
-        SOAPElement soapBodyElem = soapBody.addChildElement("ResidencyFeesMaidVisasShlcall", myNamespace);
+        SOAPElement soapBodyElem = soapBody.addChildElement("ResidencyFeesFamilyVisasShlcall", myNamespace);
         //System.out.println("-----------------------------12-----------------------");
-        SOAPElement soapBodyElem1 = soapBodyElem.addChildElement("ResidencyFeesMaidVisasShlImport");
+        SOAPElement soapBodyElem1 = soapBodyElem.addChildElement("ResidencyFeesFamilyVisasShlImport");
         //System.out.println("-----------------------------13-----------------------");
         SOAPElement soapBodyElem2 = soapBodyElem1.addChildElement("InputParameters");
         //System.out.println("-----------------------------14-----------------------");
@@ -202,7 +202,7 @@ public class SOAPClientSAAJ {
         SOAPElement soapBodyElem9 = soapBodyElem.addChildElement("paymentMethod");
         soapBodyElem9.addTextNode("1");
         SOAPElement soapBodyElem10 = soapBodyElem.addChildElement("serviceType");
-        soapBodyElem10.addTextNode("6");
+        soapBodyElem10.addTextNode("14");
         SOAPElement soapBodyElem11 = soapBodyElem.addChildElement("paymentList");
 
         SOAPElement soapBodyElem12 = soapBodyElem11.addChildElement("number");
@@ -214,9 +214,9 @@ public class SOAPClientSAAJ {
         SOAPElement soapBodyElem14 = soapBodyElem11.addChildElement("amount");
         soapBodyElem14.addTextNode(getAmount());
         SOAPElement soapBodyElem15 = soapBodyElem11.addChildElement("descriptionEn");
-        soapBodyElem15.addTextNode("Domestic Workers Fees");
+        soapBodyElem15.addTextNode("Pay Family Dependents Fees");
         SOAPElement soapBodyElem16 = soapBodyElem11.addChildElement("descriptionAr");
-        soapBodyElem16.addTextNode("سوم العمالة المنزلية");
+        soapBodyElem16.addTextNode("دفع رسوم الإقامة للالتحاق بعائل");
         SOAPElement soapBodyElem17 = soapBodyElem11.addChildElement("field1");
         soapBodyElem17.addTextNode(requestDataArray[1].getValue());
         SOAPElement soapBodyElem18 = soapBodyElem11.addChildElement("field2");
@@ -438,11 +438,11 @@ public class SOAPClientSAAJ {
         //System.out.println("-----------------------------19-----------------------");
 
         soapMessage.saveChanges();
-        //System.out.println("-----------------------------20-----------------------");
+        System.out.println("-----------------------------20-----------------------");
         /* Print the request message, just for debugging purposes */
-        //System.out.println("Request SOAP Message:");
-        //soapMessage.writeTo(System.out);
-        //System.out.println("\n");
+        System.out.println("Request SOAP Message:");
+        soapMessage.writeTo(System.out);
+        System.out.println("\n");
 
         return soapMessage;
     }

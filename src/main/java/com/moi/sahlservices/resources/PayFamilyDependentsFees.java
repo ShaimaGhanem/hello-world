@@ -26,8 +26,8 @@ import org.w3c.dom.DOMException;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-@WebServlet("/SahlServices/PayAdditionalDomesticWorkersFees")
-public class ResidencyFeesMaidVisas extends HttpServlet {
+@WebServlet("/SahlServices/PayFamilyDependentsFees")
+public class PayFamilyDependentsFees extends HttpServlet {
 
     private String paymentURL = "";
     private String feesType = "";
@@ -43,7 +43,7 @@ public class ResidencyFeesMaidVisas extends HttpServlet {
 
             String civilId;
             int stepNo = -1;
-            //System.out.println("start");
+            System.out.println("start");
             //System.out.println(request.getParameter("civilId"));
 
             /*SG: get the civil id from the request*/
@@ -51,17 +51,17 @@ public class ResidencyFeesMaidVisas extends HttpServlet {
             //System.out.println("after getting civilid");
             if (civilId != null && civilId.length() > 0) {
                 /*SG: call the SOAP webservice */
-                //String soapEndpointUrl = "http://10.10.1.1:29084/RE002/RESIDENCY_FEES_MAID_VISAS_SHL";
-                String soapEndpointUrl = "http://10.11.78.103:9080/RE002/RESIDENCY_FEES_MAID_VISAS_SHL";
-                String soapAction = "http://tempuri.org/ResidencyFeesMaidVisasShlcall/";
+                //String soapEndpointUrl = "http://10.10.1.1:29084/RE002/RESIDENCY_FEES_FAMILY_VISAS_SHL";
+                String soapEndpointUrl = "http://10.11.78.103:9080/RE002/RESIDENCY_FEES_FAMILY_VISAS_SHL";
+                String soapAction = "http://tempuri.org/ResidencyFeesFamilyVisasShlcall/";
                 SOAPClientSAAJ mSOAPClientSAAJ = new SOAPClientSAAJ();
                 SOAPMessage soapResponse;
-                //System.out.println("before calling callSoapWebService");
+                System.out.println("before calling callSoapWebService");
                 soapResponse = mSOAPClientSAAJ.callSoapWebService(soapEndpointUrl, soapAction, civilId, stepNo, null);
-                //System.out.println("after calling callSoapWebService");
-                //System.out.println("  Response SOAP Message:");
-                //soapResponse.writeTo(System.out);
-                //System.out.println();
+                System.out.println("after calling callSoapWebService");
+                System.out.println("  Response SOAP Message:");
+                soapResponse.writeTo(System.out);
+                System.out.println();
                 
                /* String faultCode = soapResponse.getSOAPPart().getEnvelope().getBody().getFault().getFaultCode();
                 System.out.println("  value of falut code is :"+faultCode);
@@ -102,11 +102,11 @@ public class ResidencyFeesMaidVisas extends HttpServlet {
 
         } catch (SOAPException ex) {
 
-            Logger.getLogger(ResidencyFeesMaidVisas.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PayFamilyDependentsFees.class.getName()).log(Level.SEVERE, null, ex);
             System.err.println("\nError occurred while sending SOAP Request to Server!\nMake sure you have the correct endpoint URL and SOAPAction!\n");
 
         } catch (IOException | DOMException e) {
-            Logger.getLogger(ResidencyFeesMaidVisas.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(PayFamilyDependentsFees.class.getName()).log(Level.SEVERE, null, e);
 
             System.err.println("\nError occurred while getting the Data!\n");
 
@@ -272,19 +272,19 @@ public class ResidencyFeesMaidVisas extends HttpServlet {
                                 oResTrue.setMessage("تم  تحصيل الرسوم\nاسم المقيم  : " + personName[1]);
                                 oResTrue.setMessageEn("Fees Collected \n Resident Name: " + personName[0]);
                                 oResTrue.setAlertType("Success");
-                                TrueResult temp = new TrueResult();
-                                temp.setStepNo(3);
-                                oResTrue.setResult(temp);
+                                //TrueResult temp = new TrueResult();
+                                //temp.setStepNo(3);
+                                oResTrue.setResult(null);
                             } else {//payment failed
                                 oResTrue.setIsSuccess(true);
                                 //oResTrue.setMessage("نظرا لحدوث خطأ أثناء عملية الدفع\nيرجى معاودة المحاولة من جديد");
                                 // oResTrue.setMessage("يرجى معاودة المحاولة من جديد نظرالحدوث خطأ في عملية الدفع" );
                                oResTrue.setMessage("لم يتم تنفيذ الخدمة\nنظرا لحدوث خطأ أثناء عملية الدفع\nيرجى معاودة المحاولة من جديد");
                                  oResTrue.setMessageEn("We could not complete the service\n Due to an error occured during the payment process\nPlease try again");
-                                oResTrue.setAlertType("Danger");
-                             TrueResult temp = new TrueResult();
-                             temp.setStepNo(3);
-                                oResTrue.setResult(temp);
+                                oResTrue.setAlertType("Error");
+                            // TrueResult temp = new TrueResult();
+                            // temp.setStepNo(3);
+                                oResTrue.setResult(null);
                             }
 
                             response.setContentType("application/json");
@@ -358,7 +358,7 @@ public class ResidencyFeesMaidVisas extends HttpServlet {
             }
 
         } catch (SOAPException ex) {
-            Logger.getLogger(ResidencyFeesMaidVisas.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PayFamilyDependentsFees.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
@@ -372,37 +372,37 @@ public class ResidencyFeesMaidVisas extends HttpServlet {
         Node node = (Node) itr.next();
 
         String FirstNodeName = node.getNodeName();
-        //System.out.println("---1---- :: node name:" + FirstNodeName);
-        if (FirstNodeName.equals("ns2:ResidencyFeesDisplayShlcallResponse") || FirstNodeName.equals("ns2:ResidencyFeesMaidVisasShlcallResponse")) {
+        System.out.println("---1---- :: node name:" + FirstNodeName);
+        if (FirstNodeName.equals("ns2:ResidencyFeesDisplayShlcallResponse") || FirstNodeName.equals("ns2:ResidencyFeesFamilyVisasShlcallResponse")) {
             Node node2 = node.getFirstChild();
             String SecondNodeName = node2.getNodeName();
-            //System.out.println("---2---- :: node name:" + SecondNodeName);
-            if (SecondNodeName.equals("ResidencyFeesDisplayShlExport") || SecondNodeName.equals("ResidencyFeesMaidVisasShlExport")) {
+            System.out.println("---2---- :: node name:" + SecondNodeName);
+            if (SecondNodeName.equals("ResidencyFeesDisplayShlExport") || SecondNodeName.equals("ResidencyFeesFamilyVisasShlExport")) {
                 NodeList childNodes = node2.getChildNodes();
                 int numberOfChilds = childNodes.getLength();
-                //System.out.println("---3---- :: number of childs:" + numberOfChilds);//outputparameters  array ...5
+                System.out.println("---3---- :: number of childs:" + numberOfChilds);//outputparameters  array ...5
                 for (int child = 0; child < numberOfChilds; child++) {
-                    //System.out.println("---4---- :: child name  :" + child + " is " + childNodes.item(child).getNodeName());
+                    System.out.println("---4---- :: child name  :" + child + " is " + childNodes.item(child).getNodeName());
                     if (childNodes.item(child).getNodeName().equals("OutputParameters")) {
                         NodeList outputParameterNodes = childNodes.item(child).getChildNodes();
                         int numberOfOPChilds = outputParameterNodes.getLength();
-                        //System.out.println("---5---- :: number of childs:" + numberOfOPChilds);
+                        System.out.println("---5---- :: number of childs:" + numberOfOPChilds);
 
                         for (int oPChild = 0; oPChild < numberOfOPChilds; oPChild++) {
-                            //System.out.println("---6---- :: child name  :" + oPChild + " is " + outputParameterNodes.item(oPChild).getNodeName());
+                            System.out.println("---6---- :: child name  :" + oPChild + " is " + outputParameterNodes.item(oPChild).getNodeName());
 
                             switch (outputParameterNodes.item(oPChild).getNodeName()) {
                                 case "IsSuccess":
                                     isSuccess = outputParameterNodes.item(oPChild).getTextContent();
-                                    //System.out.println("---6---- :: value of success is " + isSuccess);
+                                    System.out.println("---6---- :: value of success is " + isSuccess);
                                     break;
                                 case "Message":
                                     messageAr = outputParameterNodes.item(oPChild).getTextContent();
-                                    //System.out.println("---6---- :: value of messageAr is " + messageAr);
+                                    System.out.println("---6---- :: value of messageAr is " + messageAr);
                                     break;
                                 case "MessageEn":
                                     messageEn = outputParameterNodes.item(oPChild).getTextContent();
-                                    //System.out.println("---6---- :: value of messageEn is " + messageEn);
+                                    System.out.println("---6---- :: value of messageEn is " + messageEn);
                                     break;
                                 default:
                                     break;
@@ -661,7 +661,7 @@ public class ResidencyFeesMaidVisas extends HttpServlet {
     public String CheckXMLPaymentData(Iterator itr) {
 
         String valueNeeded = "";
-        String paymentId = "";
+        String paymentId  ;
         Node node = (Node) itr.next();
 
         String FirstNodeName = node.getNodeName();
