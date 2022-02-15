@@ -56,12 +56,12 @@ public class PayFamilyDependentsFees extends HttpServlet {
                 String soapAction = "http://tempuri.org/ResidencyFeesFamilyVisasShlcall/";
                 SOAPClientSAAJ mSOAPClientSAAJ = new SOAPClientSAAJ();
                 SOAPMessage soapResponse;
-                System.out.println("before calling callSoapWebService");
+               //System.out.println("before calling callSoapWebService");
                 soapResponse = mSOAPClientSAAJ.callSoapWebService(soapEndpointUrl, soapAction, civilId, stepNo, null);
-                System.out.println("after calling callSoapWebService");
-                System.out.println("  Response SOAP Message:");
-                soapResponse.writeTo(System.out);
-                System.out.println();
+                //System.out.println("after calling callSoapWebService");
+                //System.out.println("  Response SOAP Message:");
+                //soapResponse.writeTo(System.out);
+                //System.out.println();
                 
                /* String faultCode = soapResponse.getSOAPPart().getEnvelope().getBody().getFault().getFaultCode();
                 System.out.println("  value of falut code is :"+faultCode);
@@ -372,37 +372,37 @@ public class PayFamilyDependentsFees extends HttpServlet {
         Node node = (Node) itr.next();
 
         String FirstNodeName = node.getNodeName();
-        System.out.println("---1---- :: node name:" + FirstNodeName);
+        //System.out.println("---1---- :: node name:" + FirstNodeName);
         if (FirstNodeName.equals("ns2:ResidencyFeesDisplayShlcallResponse") || FirstNodeName.equals("ns2:ResidencyFeesFamilyVisasShlcallResponse")) {
             Node node2 = node.getFirstChild();
             String SecondNodeName = node2.getNodeName();
-            System.out.println("---2---- :: node name:" + SecondNodeName);
+            //System.out.println("---2---- :: node name:" + SecondNodeName);
             if (SecondNodeName.equals("ResidencyFeesDisplayShlExport") || SecondNodeName.equals("ResidencyFeesFamilyVisasShlExport")) {
                 NodeList childNodes = node2.getChildNodes();
                 int numberOfChilds = childNodes.getLength();
-                System.out.println("---3---- :: number of childs:" + numberOfChilds);//outputparameters  array ...5
+                //System.out.println("---3---- :: number of childs:" + numberOfChilds);//outputparameters  array ...5
                 for (int child = 0; child < numberOfChilds; child++) {
-                    System.out.println("---4---- :: child name  :" + child + " is " + childNodes.item(child).getNodeName());
+                    //System.out.println("---4---- :: child name  :" + child + " is " + childNodes.item(child).getNodeName());
                     if (childNodes.item(child).getNodeName().equals("OutputParameters")) {
                         NodeList outputParameterNodes = childNodes.item(child).getChildNodes();
                         int numberOfOPChilds = outputParameterNodes.getLength();
-                        System.out.println("---5---- :: number of childs:" + numberOfOPChilds);
+                        //System.out.println("---5---- :: number of childs:" + numberOfOPChilds);
 
                         for (int oPChild = 0; oPChild < numberOfOPChilds; oPChild++) {
-                            System.out.println("---6---- :: child name  :" + oPChild + " is " + outputParameterNodes.item(oPChild).getNodeName());
+                            //System.out.println("---6---- :: child name  :" + oPChild + " is " + outputParameterNodes.item(oPChild).getNodeName());
 
                             switch (outputParameterNodes.item(oPChild).getNodeName()) {
                                 case "IsSuccess":
                                     isSuccess = outputParameterNodes.item(oPChild).getTextContent();
-                                    System.out.println("---6---- :: value of success is " + isSuccess);
+                                    //System.out.println("---6---- :: value of success is " + isSuccess);
                                     break;
                                 case "Message":
                                     messageAr = outputParameterNodes.item(oPChild).getTextContent();
-                                    System.out.println("---6---- :: value of messageAr is " + messageAr);
+                                    //System.out.println("---6---- :: value of messageAr is " + messageAr);
                                     break;
                                 case "MessageEn":
                                     messageEn = outputParameterNodes.item(oPChild).getTextContent();
-                                    System.out.println("---6---- :: value of messageEn is " + messageEn);
+                                    //System.out.println("---6---- :: value of messageEn is " + messageEn);
                                     break;
                                 default:
                                     break;

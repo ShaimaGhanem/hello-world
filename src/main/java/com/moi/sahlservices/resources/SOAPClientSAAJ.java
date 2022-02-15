@@ -438,11 +438,11 @@ public class SOAPClientSAAJ {
         //System.out.println("-----------------------------19-----------------------");
 
         soapMessage.saveChanges();
-        System.out.println("-----------------------------20-----------------------");
+        //System.out.println("-----------------------------20-----------------------");
         /* Print the request message, just for debugging purposes */
-        System.out.println("Request SOAP Message:");
-        soapMessage.writeTo(System.out);
-        System.out.println("\n");
+        //System.out.println("Request SOAP Message:");
+        //soapMessage.writeTo(System.out);
+        //System.out.println("\n");
 
         return soapMessage;
     }
