@@ -12,7 +12,7 @@
     <variable name="default.http.port" defaultValue="9080"/>
     <variable name="default.https.port" defaultValue="9443"/>
 
-    <webApplication location="PayFamilyDependentsFees.war" contextRoot="/" />
+    <webApplication location="PayFamilyDependentsFees.war" contextRoot="/SahlServices/PayFamilyDependentsFees" />
     
     <mpMetrics authentication="false"/>
 

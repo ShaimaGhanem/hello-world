@@ -26,7 +26,7 @@ import org.w3c.dom.DOMException;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-@WebServlet("/SahlServices/PayFamilyDependentsFees")
+@WebServlet("/")
 public class PayFamilyDependentsFees extends HttpServlet {
 
     private String paymentURL = "";
@@ -51,8 +51,8 @@ public class PayFamilyDependentsFees extends HttpServlet {
             //System.out.println("after getting civilid");
             if (civilId != null && civilId.length() > 0) {
                 /*SG: call the SOAP webservice */
-                //String soapEndpointUrl = "http://10.10.1.1:29084/RE002/RESIDENCY_FEES_FAMILY_VISAS_SHL";
-                String soapEndpointUrl = "http://10.11.78.103:9080/RE002/RESIDENCY_FEES_FAMILY_VISAS_SHL";
+                String soapEndpointUrl = "http://10.10.1.1:29084/RE002/RESIDENCY_FEES_FAMILY_VISAS_SHL";
+                //String soapEndpointUrl = "http://10.11.78.103:9080/RE002/RESIDENCY_FEES_FAMILY_VISAS_SHL";
                 String soapAction = "http://tempuri.org/ResidencyFeesFamilyVisasShlcall/";
                 SOAPClientSAAJ mSOAPClientSAAJ = new SOAPClientSAAJ();
                 SOAPMessage soapResponse;
@@ -162,12 +162,12 @@ public class PayFamilyDependentsFees extends HttpServlet {
                         //use the data to call SOAP Display to get the required output
                         /*SG: call the SOAP webservice */
                         if (requestDataArray.length >= 3) {
-                            //soapEndpointUrl = "http://10.10.1.1:29084/RE002/RESIDENCY_FEES_DISPLAY_SHL";
-                            soapEndpointUrl = "http://10.11.78.103:9080/RE002/RESIDENCY_FEES_DISPLAY_SHL";
+                            soapEndpointUrl = "http://10.10.1.1:29084/RE002/RESIDENCY_FEES_DISPLAY_SHL";
+                            //soapEndpointUrl = "http://10.11.78.103:9080/RE002/RESIDENCY_FEES_DISPLAY_SHL";
                             soapAction = "http://tempuri.org/ResidencyFeesDisplayShlcall/";
                             mSOAPClientSAAJ = new SOAPClientSAAJ();
 
-                            //System.out.println("before calling callSoapWebService");
+                            System.out.println("before calling callSoapWebService");
                             soapResponse = mSOAPClientSAAJ.callSoapWebService(soapEndpointUrl, soapAction, civilId, stepNo, requestDataArray);
                             //System.out.println("after calling callSoapWebService");
                             //System.out.println(" Response SOAP Message:");
@@ -254,8 +254,8 @@ public class PayFamilyDependentsFees extends HttpServlet {
 
                             if (valueNeeded.equals("1"))// payment success
                             {
-                               // soapEndpointUrl = "http://10.10.1.1:29084/RE004/PERSON_DETAILS_DISPLAY";
-                                soapEndpointUrl = "http://10.11.78.103:9080/RE004/PERSON_DETAILS_DISPLAY";
+                                soapEndpointUrl = "http://10.10.1.1:29084/RE004/PERSON_DETAILS_DISPLAY";
+                                //soapEndpointUrl = "http://10.11.78.103:9080/RE004/PERSON_DETAILS_DISPLAY";
                                 soapAction = "http://tempuri.org/PersonDetailsDisplaycall/";
                                 mSOAPClientSAAJ = new SOAPClientSAAJ();
                                 //System.out.println("before getting personal data");
