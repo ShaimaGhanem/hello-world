@@ -1,0 +1,48 @@
+Launching defaultServer (Open Liberty 22.0.0.2/wlp-1.0.61.cl220220220201-1901) on Java HotSpot(TM) 64-Bit Server VM, version 1.8.0_202-b08 (en_US)
+[AUDIT   ] CWWKE0001I: The server defaultServer has been launched.
+[AUDIT   ] CWWKG0093A: Processing configuration drop-ins resource: C:\Users\MOI\PayFamilyDependentsFees\target\liberty\wlp\usr\servers\defaultServer\configDropins\overrides\liberty-plugin-variable-config.xml
+[AUDIT   ] CWWKZ0058I: Monitoring dropins for applications.
+[AUDIT   ] CWPKI0820A: The default keystore has been created using the 'keystore_password' environment variable.
+[AUDIT   ] CWWKT0016I: Web application available (default_host): http://moi-7hembmla4ur:9080/metrics/
+[AUDIT   ] CWWKT0016I: Web application available (default_host): http://moi-7hembmla4ur:9080/ibm/api/
+[AUDIT   ] CWWKT0016I: Web application available (default_host): http://moi-7hembmla4ur:9080/SahlServices/PayFamilyDependentsFees/
+[AUDIT   ] CWWKZ0001I: Application PayFamilyDependentsFees started in 1.727 seconds.
+[AUDIT   ] CWWKF0012I: The server installed the following features: [cdi-2.0, distributedMap-1.0, jaxrs-2.1, jaxrsClient-2.1, jndi-1.0, json-1.0, jsonp-1.1, monitor-1.0, mpConfig-2.0, mpMetrics-3.0, servlet-4.0, ssl-1.0].
+[AUDIT   ] CWWKF0011I: The defaultServer server is ready to run a smarter planet. The defaultServer server started in 11.519 seconds.
+start
+-----------------------------20-----------------------
+Request SOAP Message:
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:res="http://tempuri.org/ResidencyFeesFamilyVisasShl/"><SOAP-ENV:Header/><SOAP-ENV:Body><res:ResidencyFeesFamilyVisasShlcall><ResidencyFeesFamilyVisasShlImport><InputParameters><CivilId>285063000886</CivilId></InputParameters></ResidencyFeesFamilyVisasShlImport></res:ResidencyFeesFamilyVisasShlcall></SOAP-ENV:Body></SOAP-ENV:Envelope>
+
+
+before calling callSoapWebService
+-----------------------------20-----------------------
+Request SOAP Message:
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:res="http://tempuri.org/ResidencyFeesDisplayShl/"><SOAP-ENV:Header/><SOAP-ENV:Body><res:ResidencyFeesDisplayShlcall><ResidencyFeesDisplayShlImport><InputParameters><CivilId>285063000886</CivilId></InputParameters><Array><row><InputItemModels><Key>ResidentCivilID</Key><Value>205052700032</Value><Type>Dropdown</Type></InputItemModels></row><row><InputItemModels><Key>FeesPeriod</Key><Value>3</Value><Type>Dropdown</Type></InputItemModels></row><row><InputItemModels><Key>FeesType</Key><Value>1</Value><Type>Hidden</Type></InputItemModels></row></Array></ResidencyFeesDisplayShlImport></res:ResidencyFeesDisplayShlcall></SOAP-ENV:Body></SOAP-ENV:Envelope>
+
+
+after calling callSoapWebService
+ Response SOAP Message:
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><ns2:ResidencyFeesDisplayShlcallResponse xmlns:ns2="http://tempuri.org/ResidencyFeesDisplayShl/"><ResidencyFeesDisplayShlExport command="" exitState="31461653" exitStateType="3" exitStateMsg=" "><OutputParameters><IsSuccess>true</IsSuccess><Message></Message><MessageEn></MessageEn></OutputParameters><Result><NameAr>دفع رسوم الاقامة للالتحاق بعائل</NameAr><NameEn>Paying Fees for Dependents</NameEn><ButtonLabelAr>متابعة</ButtonLabelAr><ButtonLabelEn>Next</ButtonLabelEn><StepNo>2</StepNo></Result><Arrays><row><ControlsModels><Id>ResidencyPayFee</Id><Type>PaymentView</Type><LabelAr></LabelAr><LabelEn></LabelEn><IsRequired>false</IsRequired><DefaultValue> </DefaultValue><IsDisabled>true </IsDisabled></ControlsModels></row><row><ControlsModels><Id>ResidentNatNumber</Id><Type>Hidden</Type><LabelAr></LabelAr><LabelEn></LabelEn><IsRequired>false</IsRequired><DefaultValue>119313422</DefaultValue><IsDisabled>     </IsDisabled></ControlsModels></row></Arrays><ResidencyFeesDetails><SponsorCivilId>285063000886</SponsorCivilId><ResidentCivilId>205052700032</ResidentCivilId><FeesType>1</FeesType><Period>3</Period><Amount>10</Amount></ResidencyFeesDetails><Response><ReturnCode>1</ReturnCode><ReturnMessage>The Residency fees application is accepted\nPlease pay the prescribed fees</ReturnMessage></Response></ResidencyFeesDisplayShlExport></ns2:ResidencyFeesDisplayShlcallResponse></soap:Body></soap:Envelope>
+-----------------------------20-----------------------
+Request SOAP Message:
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:def="http://www.moi.gov.kw/Services/PayGateService/V1/Definitions" xmlns:moih="http://www.moi.gov.kw/Common/V1/MoiHeader"><SOAP-ENV:Header><wsse:Security xmlns:soapenv="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" soapenv:mustUnderstand="0"><wsse:UsernameToken wsu:Id="UsernameToken-6E7F82F20833FD165316396362254181"><wsse:Username>MOISAHELTESTWSUser</wsse:Username><wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">ey+hn0nb9mpEbhhZ7M0qZk7u3zY=</wsse:Password><wsse:Nonce EncodingType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0#Base64Binary">cMlDW0fnanjXbcLKNiJc0Q==</wsse:Nonce><wsu:Created>2021-12-16T06:30:25.414Z</wsu:Created></wsse:UsernameToken></wsse:Security><moih:MoiHeader><Entity>MOI</Entity><Department>IT</Department><Application>SHLPAYVIEW</Application><Requestor>285063000886</Requestor></moih:MoiHeader></SOAP-ENV:Header><SOAP-ENV:Body><def:InitiatePaymentRequest><civilId>285063000886</civilId><totalPayAmt>10</totalPayAmt><contactInfo><emailId/><mobile>00000000</mobile></contactInfo><language>AR</language><currency>KWD</currency><channelID>4</channelID><paymentMethod>1</paymentMethod><serviceType>14</serviceType><paymentList><number>205052700032</number><year>2022</year><amount>10</amount><descriptionEn>Pay Family Dependents Fees</descriptionEn><descriptionAr>دفع رسوم الإقامة للالتحاق بعائل</descriptionAr><field1>3</field1><field2>1</field2></paymentList></def:InitiatePaymentRequest></SOAP-ENV:Body></SOAP-ENV:Envelope>
+
+
+after calling callSoapWebService
+Response SOAP Message:
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Header><ns1:MoiHeader xmlns:ns1="http://www.moi.gov.kw/Common/V1/MoiHeader"><Entity>MOI</Entity><Department>IT</Department><Application>SHLPAYVIEW</Application><Requestor>285063000886</Requestor></ns1:MoiHeader></soapenv:Header><soapenv:Body><InitiatePaymentResponse xmlns="http://www.moi.gov.kw/Services/PayGateService/V1/Definitions"><statusCode xmlns="">I</statusCode><statusMessage xmlns="">Payment Initialized Successfully</statusMessage><civilId xmlns="">285063000886</civilId><baseUrl xmlns="">https://kpaytest.com.kw/kpg/paymentpage.htm?</baseUrl><token xmlns="">NOT APPLIED</token><params xmlns=""><paramName>PaymentID</paramName><paramValue>100202204836837602</paramValue></params><httpMethod xmlns="">GET</httpMethod></InitiatePaymentResponse></soapenv:Body></soapenv:Envelope>
+-----------------------------20-----------------------
+Request SOAP Message:
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:example"><SOAP-ENV:Header><wsse:Security xmlns:soapenv="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" soapenv:mustUnderstand="0"><wsse:UsernameToken wsu:Id="UsernameToken-46BBB499B7F114933D16407740520662"><wsse:Username>MOIPACITESTWSUser</wsse:Username><wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">ZYyAwMo0KAWs1xX788RwIQQXKtw=</wsse:Password><wsse:Nonce EncodingType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0#Base64Binary">i8W+N7VU/wEB8eKPluCd5g==</wsse:Nonce><wsu:Created>2021-12-29T10:34:12.066Z</wsu:Created></wsse:UsernameToken></wsse:Security></SOAP-ENV:Header><SOAP-ENV:Body><urn:SahelPayView><CIVIL_ID>285063000886</CIVIL_ID></urn:SahelPayView></SOAP-ENV:Body></SOAP-ENV:Envelope>
+
+
+[AUDIT   ] CWWKE0055I: Server shutdown requested on Thursday, February 17, 2022 at 8:12 AM. The server defaultServer is shutting down.
+[AUDIT   ] CWWKE1100I: Waiting for up to 30 seconds for the server to quiesce.
+[AUDIT   ] CWWKT0017I: Web application removed (default_host): http://moi-7hembmla4ur:9080/metrics/
+[AUDIT   ] CWWKT0017I: Web application removed (default_host): http://moi-7hembmla4ur:9080/SahlServices/PayFamilyDependentsFees/
+[AUDIT   ] CWWKT0017I: Web application removed (default_host): http://moi-7hembmla4ur:9080/ibm/api/
+[AUDIT   ] CWWKZ0009I: The application PayFamilyDependentsFees has stopped successfully.
+[AUDIT   ] CWWKE0036I: The server defaultServer stopped after 18 minutes, 39.841 seconds.
+Picked up JAVA_TOOL_OPTIONS: -Dfile.encoding=UTF8

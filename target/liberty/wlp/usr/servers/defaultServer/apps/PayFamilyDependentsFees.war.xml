@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archive>
+    <dir sourceOnDisk="C:\Users\MOI\PayFamilyDependentsFees\target\classes" targetInArchive="/WEB-INF/classes"/>
+    <file sourceOnDisk="C:\Users\MOI\.m2\repository\com\google\code\gson\gson\2.8.2\gson-2.8.2.jar" targetInArchive="/WEB-INF/lib/gson-2.8.2.jar"/>
+    <file sourceOnDisk="C:\Users\MOI\PayFamilyDependentsFees\target\tmp\META-INF\MANIFEST.MF" targetInArchive="/META-INF/MANIFEST.MF"/>
+</archive>

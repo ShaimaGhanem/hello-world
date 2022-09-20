@@ -1,0 +1,8 @@
+com\moi\sahlservices\resources\GetResponse.class
+com\moi\sahlservices\resources\GetResponseEmpty.class
+com\moi\sahlservices\resources\OptionControlModel.class
+com\moi\sahlservices\resources\TrueResult.class
+com\moi\sahlservices\resources\ControlsModel.class
+com\moi\sahlservices\resources\PostRequestStep1.class
+com\moi\sahlservices\resources\TrueResultEmpty.class
+com\moi\sahlservices\resources\SOAPClientSAAJ.class
